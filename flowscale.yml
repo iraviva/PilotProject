@@ -3,5 +3,17 @@ models: models.json
 custom_nodes: custom_nodes.json
 user_models: user_models.json
 user_custom_nodes: user_custom_nodes.json
-workflows: []
-normal_workflows: []
+workflows:
+  - id: w9sqew2izb
+    name: pilot_api.json
+    file: initialprojects/pilot_api.json
+    version: .nan
+    description: ''
+    inputs: []
+    outputs: []
+    skip_preprocess: true
+normal_workflows:
+  - id: kb75oxeh00e
+    name: pilot.json
+    file: initialprojects/pilot.json
+    version: .nan
