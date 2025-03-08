@@ -12,8 +12,20 @@ workflows:
     inputs: []
     outputs: []
     skip_preprocess: true
+  - id: rmgs2vjt0a
+    name: segmentation_api.json
+    file: segmentation/segmentation_api.json
+    version: .nan
+    description: ''
+    inputs: []
+    outputs: []
+    skip_preprocess: true
 normal_workflows:
   - id: kb75oxeh00e
     name: pilot.json
     file: initialprojects/pilot.json
+    version: .nan
+  - id: ywlvl8sdpzc
+    name: segmentation.json
+    file: segmentation/segmentation.json
     version: .nan
