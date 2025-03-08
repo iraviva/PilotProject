@@ -1,0 +1,325 @@
+{
+    "last_node_id": 22,
+    "last_link_id": 29,
+    "nodes": [
+        {
+            "id": 17,
+            "type": "SAMModelLoader (segment anything)",
+            "pos": [
+                -650.8628540039062,
+                504.6841125488281
+            ],
+            "size": [
+                415.8000183105469,
+                58
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "SAM_MODEL",
+                    "type": "SAM_MODEL",
+                    "links": [
+                        24
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "sam",
+                "ver": "ab6395596399d5048639cdab7e44ec9fae857a93",
+                "Node name for S&R": "SAMModelLoader (segment anything)"
+            },
+            "widgets_values": [
+                "sam_vit_h (2.56GB)"
+            ]
+        },
+        {
+            "id": 21,
+            "type": "GroundingDinoModelLoader (segment anything)",
+            "pos": [
+                -757.474609375,
+                701.3778686523438
+            ],
+            "size": [
+                541.800048828125,
+                58
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "GROUNDING_DINO_MODEL",
+                    "type": "GROUNDING_DINO_MODEL",
+                    "links": [
+                        28
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "sam",
+                "ver": "ab6395596399d5048639cdab7e44ec9fae857a93",
+                "Node name for S&R": "GroundingDinoModelLoader (segment anything)"
+            },
+            "widgets_values": [
+                "GroundingDINO_SwinT_OGC (694MB)"
+            ]
+        },
+        {
+            "id": 19,
+            "type": "MaskToImage",
+            "pos": [
+                261.5329284667969,
+                659.2288208007812
+            ],
+            "size": [
+                264.5999755859375,
+                26
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 26
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        27
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 16,
+            "type": "GroundingDinoSAMSegment (segment anything)",
+            "pos": [
+                -108.77763366699219,
+                451.8896484375
+            ],
+            "size": [
+                529.199951171875,
+                122
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "sam_model",
+                    "type": "SAM_MODEL",
+                    "link": 24
+                },
+                {
+                    "name": "grounding_dino_model",
+                    "type": "GROUNDING_DINO_MODEL",
+                    "link": 28
+                },
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 29
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        25
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        26
+                    ],
+                    "slot_index": 1
+                }
+            ],
+            "properties": {
+                "cnr_id": "sam",
+                "ver": "ab6395596399d5048639cdab7e44ec9fae857a93",
+                "Node name for S&R": "GroundingDinoSAMSegment (segment anything)"
+            },
+            "widgets_values": [
+                "indian hindu wedding couple",
+                0.3
+            ]
+        },
+        {
+            "id": 22,
+            "type": "LoadImage",
+            "pos": [
+                -550.8633422851562,
+                841.874755859375
+            ],
+            "size": [
+                315,
+                314
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        29
+                    ]
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "indiancouple.jpg",
+                "image"
+            ]
+        },
+        {
+            "id": 18,
+            "type": "PreviewImage",
+            "pos": [
+                -153.34283447265625,
+                888.98095703125
+            ],
+            "size": [
+                210,
+                246
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 25
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "PreviewImage"
+            }
+        },
+        {
+            "id": 20,
+            "type": "PreviewImage",
+            "pos": [
+                117.73239135742188,
+                879.0636596679688
+            ],
+            "size": [
+                210,
+                246
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 27
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "PreviewImage"
+            }
+        }
+    ],
+    "links": [
+        [
+            24,
+            17,
+            0,
+            16,
+            0,
+            "SAM_MODEL"
+        ],
+        [
+            25,
+            16,
+            0,
+            18,
+            0,
+            "IMAGE"
+        ],
+        [
+            26,
+            16,
+            1,
+            19,
+            0,
+            "MASK"
+        ],
+        [
+            27,
+            19,
+            0,
+            20,
+            0,
+            "IMAGE"
+        ],
+        [
+            28,
+            21,
+            0,
+            16,
+            1,
+            "GROUNDING_DINO_MODEL"
+        ],
+        [
+            29,
+            22,
+            0,
+            16,
+            2,
+            "IMAGE"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {
+        "ds": {
+            "scale": 1.2100000000000006,
+            "offset": [
+                599.6238621340158,
+                -665.8411422139942
+            ]
+        }
+    },
+    "version": 0.4
+}
