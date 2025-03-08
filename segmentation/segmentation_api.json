@@ -1,88 +1,144 @@
 {
-    "16": {
+    "23": {
         "inputs": {
-            "prompt": "indian hindu wedding couple",
-            "threshold": 0.3,
-            "sam_model": [
-                "17",
+            "control_net_name": "control_v11f1p_sd15_depth_fp16.safetensors"
+        },
+        "class_type": "ControlNetLoader",
+        "_meta": {
+            "title": "Load ControlNet Model"
+        }
+    },
+    "24": {
+        "inputs": {
+            "strength": 1,
+            "start_percent": 0,
+            "end_percent": 1,
+            "positive": [
+                "27",
                 0
             ],
-            "grounding_dino_model": [
-                "21",
+            "negative": [
+                "28",
+                0
+            ],
+            "control_net": [
+                "23",
                 0
             ],
             "image": [
-                "22",
+                "29",
                 0
             ]
         },
-        "class_type": "GroundingDinoSAMSegment (segment anything)",
+        "class_type": "ControlNetApplyAdvanced",
         "_meta": {
-            "title": "GroundingDinoSAMSegment (segment anything)"
+            "title": "Apply ControlNet"
         }
     },
-    "17": {
+    "25": {
         "inputs": {
-            "model_name": "sam_vit_h (2.56GB)"
-        },
-        "class_type": "SAMModelLoader (segment anything)",
-        "_meta": {
-            "title": "SAMModelLoader (segment anything)"
-        }
-    },
-    "18": {
-        "inputs": {
-            "images": [
-                "16",
+            "seed": 0,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 1,
+            "positive": [
+                "24",
                 0
-            ]
-        },
-        "class_type": "PreviewImage",
-        "_meta": {
-            "title": "Preview Image"
-        }
-    },
-    "19": {
-        "inputs": {
-            "mask": [
-                "16",
+            ],
+            "negative": [
+                "24",
                 1
             ]
         },
-        "class_type": "MaskToImage",
+        "class_type": "KSampler",
         "_meta": {
-            "title": "Convert Mask to Image"
+            "title": "KSampler"
         }
     },
-    "20": {
+    "26": {
         "inputs": {
-            "images": [
-                "19",
+            "ckpt_name": "AOM3A1.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    },
+    "27": {
+        "inputs": {
+            "text": "",
+            "clip": [
+                "26",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "28": {
+        "inputs": {
+            "text": ""
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "29": {
+        "inputs": {
+            "ckpt_name": "depth_anything_vitl14.pth",
+            "resolution": 512,
+            "image": [
+                "30",
                 0
             ]
         },
-        "class_type": "PreviewImage",
+        "class_type": "DepthAnythingPreprocessor",
         "_meta": {
-            "title": "Preview Image"
+            "title": "Depth Anything"
         }
     },
-    "21": {
+    "30": {
         "inputs": {
-            "model_name": "GroundingDINO_SwinT_OGC (694MB)"
-        },
-        "class_type": "GroundingDinoModelLoader (segment anything)",
-        "_meta": {
-            "title": "GroundingDinoModelLoader (segment anything)"
-        }
-    },
-    "22": {
-        "inputs": {
-            "image": "indiancouple.jpg",
+            "image": "example.png",
             "upload": "image"
         },
         "class_type": "LoadImage",
         "_meta": {
             "title": "Load Image"
+        }
+    },
+    "31": {
+        "inputs": {
+            "samples": [
+                "25",
+                0
+            ],
+            "vae": [
+                "26",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "32": {
+        "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+                "31",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Image"
         }
     }
 }
