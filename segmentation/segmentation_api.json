@@ -1,7 +1,7 @@
 {
     "23": {
         "inputs": {
-            "control_net_name": "control_v11f1p_sd15_depth_fp16.safetensors"
+            "control_net_name": "control_v11p_sd15_canny.pth"
         },
         "class_type": "ControlNetLoader",
         "_meta": {
@@ -37,7 +37,7 @@
     },
     "25": {
         "inputs": {
-            "seed": 0,
+            "seed": 784501793939788,
             "steps": 20,
             "cfg": 8,
             "sampler_name": "euler",
@@ -68,7 +68,7 @@
     },
     "27": {
         "inputs": {
-            "text": "",
+            "text": "a baby having icecream",
             "clip": [
                 "26",
                 1
@@ -81,7 +81,11 @@
     },
     "28": {
         "inputs": {
-            "text": ""
+            "text": "",
+            "clip": [
+                "26",
+                1
+            ]
         },
         "class_type": "CLIPTextEncode",
         "_meta": {
@@ -104,7 +108,7 @@
     },
     "30": {
         "inputs": {
-            "image": "example.png",
+            "image": "e9r6otl3.bmp",
             "upload": "image"
         },
         "class_type": "LoadImage",
@@ -139,6 +143,33 @@
         "class_type": "SaveImage",
         "_meta": {
             "title": "Save Image"
+        }
+    },
+    "33": {
+        "inputs": {
+            "images": [
+                "34",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "34": {
+        "inputs": {
+            "low_threshold": 100,
+            "high_threshold": 200,
+            "resolution": 512,
+            "image": [
+                "30",
+                0
+            ]
+        },
+        "class_type": "CannyEdgePreprocessor",
+        "_meta": {
+            "title": "Canny Edge"
         }
     }
 }
