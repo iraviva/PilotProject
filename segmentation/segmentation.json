@@ -1,120 +1,7 @@
 {
-    "last_node_id": 32,
-    "last_link_id": 41,
+    "last_node_id": 34,
+    "last_link_id": 45,
     "nodes": [
-        {
-            "id": 30,
-            "type": "LoadImage",
-            "pos": [
-                -615.0243530273438,
-                43.94902801513672
-            ],
-            "size": [
-                229,
-                213
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "name": "IMAGE",
-                    "type": "IMAGE",
-                    "links": [
-                        36
-                    ]
-                },
-                {
-                    "name": "MASK",
-                    "type": "MASK",
-                    "links": null
-                }
-            ],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.15",
-                "Node name for S&R": "LoadImage"
-            },
-            "widgets_values": [
-                "example.png",
-                "image"
-            ]
-        },
-        {
-            "id": 29,
-            "type": "DepthAnythingPreprocessor",
-            "pos": [
-                -265.0243225097656,
-                12.949028015136719
-            ],
-            "size": [
-                315,
-                82
-            ],
-            "flags": {},
-            "order": 4,
-            "mode": 0,
-            "inputs": [
-                {
-                    "name": "image",
-                    "type": "IMAGE",
-                    "link": 36
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "IMAGE",
-                    "type": "IMAGE",
-                    "links": [
-                        37
-                    ],
-                    "slot_index": 0
-                }
-            ],
-            "properties": {
-                "aux_id": "Fannovel16/comfyui_controlnet_aux",
-                "ver": "1e9eac6377c882da8bb360c7544607036904362c",
-                "Node name for S&R": "DepthAnythingPreprocessor"
-            },
-            "widgets_values": [
-                "depth_anything_vitl14.pth",
-                512
-            ]
-        },
-        {
-            "id": 23,
-            "type": "ControlNetLoader",
-            "pos": [
-                -187.04962158203125,
-                169.48748779296875
-            ],
-            "size": [
-                315,
-                58
-            ],
-            "flags": {},
-            "order": 1,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "name": "CONTROL_NET",
-                    "type": "CONTROL_NET",
-                    "links": [
-                        38
-                    ]
-                }
-            ],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.15",
-                "Node name for S&R": "ControlNetLoader"
-            },
-            "widgets_values": [
-                "control_v11f1p_sd15_depth_fp16.safetensors"
-            ]
-        },
         {
             "id": 28,
             "type": "CLIPTextEncode",
@@ -127,13 +14,13 @@
                 155
             ],
             "flags": {},
-            "order": 2,
+            "order": 4,
             "mode": 0,
             "inputs": [
                 {
                     "name": "clip",
                     "type": "CLIP",
-                    "link": null
+                    "link": 43
                 }
             ],
             "outputs": [
@@ -142,46 +29,6 @@
                     "type": "CONDITIONING",
                     "links": [
                         34
-                    ],
-                    "slot_index": 0
-                }
-            ],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.15",
-                "Node name for S&R": "CLIPTextEncode"
-            },
-            "widgets_values": [
-                ""
-            ]
-        },
-        {
-            "id": 27,
-            "type": "CLIPTextEncode",
-            "pos": [
-                -137.02432250976562,
-                338.94903564453125
-            ],
-            "size": [
-                333,
-                155
-            ],
-            "flags": {},
-            "order": 5,
-            "mode": 0,
-            "inputs": [
-                {
-                    "name": "clip",
-                    "type": "CLIP",
-                    "link": 35
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "CONDITIONING",
-                    "type": "CONDITIONING",
-                    "links": [
-                        33
                     ],
                     "slot_index": 0
                 }
@@ -207,7 +54,7 @@
                 186
             ],
             "flags": {},
-            "order": 6,
+            "order": 7,
             "mode": 0,
             "inputs": [
                 {
@@ -267,18 +114,102 @@
             ]
         },
         {
+            "id": 31,
+            "type": "VAEDecode",
+            "pos": [
+                1142.9757080078125,
+                408.94903564453125
+            ],
+            "size": [
+                210,
+                46
+            ],
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "samples",
+                    "type": "LATENT",
+                    "link": 39
+                },
+                {
+                    "name": "vae",
+                    "type": "VAE",
+                    "link": 41
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        40
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "VAEDecode"
+            },
+            "widgets_values": []
+        },
+        {
+            "id": 29,
+            "type": "DepthAnythingPreprocessor",
+            "pos": [
+                -265.0243225097656,
+                12.949028015136719
+            ],
+            "size": [
+                315,
+                82
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 36
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        37
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "aux_id": "Fannovel16/comfyui_controlnet_aux",
+                "ver": "1e9eac6377c882da8bb360c7544607036904362c",
+                "Node name for S&R": "DepthAnythingPreprocessor"
+            },
+            "widgets_values": [
+                "depth_anything_vitl14.pth",
+                512
+            ]
+        },
+        {
             "id": 25,
             "type": "KSampler",
             "pos": [
-                743.9756469726562,
-                415.94903564453125
+                771.9756469726562,
+                425.94903564453125
             ],
             "size": [
                 315,
                 262
             ],
             "flags": {},
-            "order": 7,
+            "order": 9,
             "mode": 0,
             "inputs": [
                 {
@@ -318,7 +249,7 @@
                 "Node name for S&R": "KSampler"
             },
             "widgets_values": [
-                0,
+                784501793939788,
                 "randomize",
                 20,
                 8,
@@ -328,90 +259,18 @@
             ]
         },
         {
-            "id": 31,
-            "type": "VAEDecode",
-            "pos": [
-                1142.9757080078125,
-                408.94903564453125
-            ],
-            "size": [
-                210,
-                46
-            ],
-            "flags": {},
-            "order": 8,
-            "mode": 0,
-            "inputs": [
-                {
-                    "name": "samples",
-                    "type": "LATENT",
-                    "link": 39
-                },
-                {
-                    "name": "vae",
-                    "type": "VAE",
-                    "link": 41
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "IMAGE",
-                    "type": "IMAGE",
-                    "links": [
-                        40
-                    ],
-                    "slot_index": 0
-                }
-            ],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.15",
-                "Node name for S&R": "VAEDecode"
-            }
-        },
-        {
-            "id": 32,
-            "type": "SaveImage",
-            "pos": [
-                1387.9757080078125,
-                407.94903564453125
-            ],
-            "size": [
-                315,
-                58
-            ],
-            "flags": {},
-            "order": 9,
-            "mode": 0,
-            "inputs": [
-                {
-                    "name": "images",
-                    "type": "IMAGE",
-                    "link": 40
-                }
-            ],
-            "outputs": [],
-            "properties": {
-                "cnr_id": "comfy-core",
-                "ver": "0.3.15"
-            },
-            "widgets_values": [
-                "ComfyUI"
-            ]
-        },
-        {
             "id": 26,
             "type": "CheckpointLoaderSimple",
             "pos": [
-                -508.0243225097656,
-                360.94903564453125
+                -649.0242919921875,
+                492.94903564453125
             ],
             "size": [
                 315,
                 98
             ],
             "flags": {},
-            "order": 3,
+            "order": 0,
             "mode": 0,
             "inputs": [],
             "outputs": [
@@ -425,7 +284,8 @@
                     "name": "CLIP",
                     "type": "CLIP",
                     "links": [
-                        35
+                        35,
+                        43
                     ],
                     "slot_index": 1
                 },
@@ -445,6 +305,220 @@
             },
             "widgets_values": [
                 "AOM3A1.safetensors"
+            ]
+        },
+        {
+            "id": 27,
+            "type": "CLIPTextEncode",
+            "pos": [
+                -137.02432250976562,
+                338.94903564453125
+            ],
+            "size": [
+                333,
+                155
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "clip",
+                    "type": "CLIP",
+                    "link": 35
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "CONDITIONING",
+                    "type": "CONDITIONING",
+                    "links": [
+                        33
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+                "a baby having icecream"
+            ]
+        },
+        {
+            "id": 30,
+            "type": "LoadImage",
+            "pos": [
+                -615.0243530273438,
+                43.94902801513672
+            ],
+            "size": [
+                229,
+                314
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        36,
+                        44
+                    ],
+                    "slot_index": 0
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "e9r6otl3.bmp",
+                "image"
+            ]
+        },
+        {
+            "id": 34,
+            "type": "CannyEdgePreprocessor",
+            "pos": [
+                -377.89593505859375,
+                -97.08147430419922
+            ],
+            "size": [
+                315,
+                106
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 44
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        45
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "aux_id": "Fannovel16/comfyui_controlnet_aux",
+                "ver": "1e9eac6377c882da8bb360c7544607036904362c",
+                "Node name for S&R": "CannyEdgePreprocessor"
+            },
+            "widgets_values": [
+                100,
+                200,
+                512
+            ]
+        },
+        {
+            "id": 23,
+            "type": "ControlNetLoader",
+            "pos": [
+                -187.04962158203125,
+                169.48748779296875
+            ],
+            "size": [
+                315,
+                58
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "CONTROL_NET",
+                    "type": "CONTROL_NET",
+                    "links": [
+                        38
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "ControlNetLoader"
+            },
+            "widgets_values": [
+                "control_v11p_sd15_canny.pth"
+            ]
+        },
+        {
+            "id": 33,
+            "type": "PreviewImage",
+            "pos": [
+                -368.6910705566406,
+                93.67401123046875
+            ],
+            "size": [
+                210,
+                246
+            ],
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 45
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "PreviewImage"
+            }
+        },
+        {
+            "id": 32,
+            "type": "SaveImage",
+            "pos": [
+                719.793701171875,
+                151.58547973632812
+            ],
+            "size": [
+                315,
+                58
+            ],
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 40
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15"
+            },
+            "widgets_values": [
+                "ComfyUI"
             ]
         }
     ],
@@ -536,16 +610,40 @@
             31,
             1,
             "VAE"
+        ],
+        [
+            43,
+            26,
+            1,
+            28,
+            0,
+            "CLIP"
+        ],
+        [
+            44,
+            30,
+            0,
+            34,
+            0,
+            "IMAGE"
+        ],
+        [
+            45,
+            34,
+            0,
+            33,
+            0,
+            "IMAGE"
         ]
     ],
     "groups": [],
     "config": {},
     "extra": {
         "ds": {
-            "scale": 1,
+            "scale": 0.6830134553650707,
             "offset": [
-                608.0243302480653,
-                -132.94902808341521
+                675.7020957026111,
+                123.1812342802209
             ]
         }
     },
