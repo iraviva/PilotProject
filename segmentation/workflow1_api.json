@@ -1,0 +1,234 @@
+{
+    "33": {
+        "inputs": {
+            "image": "example.png",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    },
+    "34": {
+        "inputs": {
+            "width": 1024,
+            "height": 1024,
+            "interpolation": "nearest",
+            "method": "keep proportion",
+            "condition": "always",
+            "multiple_of": 0,
+            "image": [
+                "33",
+                0
+            ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+            "title": "🔧 Image Resize"
+        }
+    },
+    "35": {
+        "inputs": {
+            "model_name": "sam_vit_h (2.56GB)"
+        },
+        "class_type": "SAMModelLoader (segment anything)",
+        "_meta": {
+            "title": "SAMModelLoader (segment anything)"
+        }
+    },
+    "36": {
+        "inputs": {
+            "prompt": "",
+            "threshold": 0.3,
+            "sam_model": [
+                "35",
+                0
+            ],
+            "grounding_dino_model": [
+                "37",
+                0
+            ],
+            "image": [
+                "34",
+                0
+            ]
+        },
+        "class_type": "GroundingDinoSAMSegment (segment anything)",
+        "_meta": {
+            "title": "GroundingDinoSAMSegment (segment anything)"
+        }
+    },
+    "37": {
+        "inputs": {
+            "model_name": "GroundingDINO_SwinT_OGC (694MB)"
+        },
+        "class_type": "GroundingDinoModelLoader (segment anything)",
+        "_meta": {
+            "title": "GroundingDinoModelLoader (segment anything)"
+        }
+    },
+    "38": {
+        "inputs": {
+            "pixels": [
+                "34",
+                0
+            ],
+            "vae": [
+                "39",
+                2
+            ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+            "title": "VAE Encode"
+        }
+    },
+    "39": {
+        "inputs": {
+            "ckpt_name": "AOM3A1.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    },
+    "40": {
+        "inputs": {
+            "text": "",
+            "clip": [
+                "39",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "41": {
+        "inputs": {
+            "text": "",
+            "clip": [
+                "39",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "42": {
+        "inputs": {
+            "seed": 0,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 1,
+            "model": [
+                "39",
+                0
+            ],
+            "positive": [
+                "46",
+                0
+            ],
+            "negative": [
+                "46",
+                1
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "43": {
+        "inputs": {
+            "samples": [
+                "42",
+                0
+            ],
+            "vae": [
+                "39",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "44": {
+        "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+                "43",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Image"
+        }
+    },
+    "45": {
+        "inputs": {
+            "ckpt_name": "depth_anything_vitl14.pth",
+            "resolution": 512
+        },
+        "class_type": "DepthAnythingPreprocessor",
+        "_meta": {
+            "title": "Depth Anything"
+        }
+    },
+    "46": {
+        "inputs": {
+            "strength": 1,
+            "start_percent": 0,
+            "end_percent": 1,
+            "positive": [
+                "40",
+                0
+            ],
+            "negative": [
+                "41",
+                0
+            ],
+            "control_net": [
+                "47",
+                0
+            ],
+            "image": [
+                "45",
+                0
+            ]
+        },
+        "class_type": "ControlNetApplyAdvanced",
+        "_meta": {
+            "title": "Apply ControlNet"
+        }
+    },
+    "47": {
+        "inputs": {
+            "control_net_name": "control_v11f1p_sd15_depth_fp16.safetensors"
+        },
+        "class_type": "ControlNetLoader",
+        "_meta": {
+            "title": "Load ControlNet Model"
+        }
+    },
+    "49": {
+        "inputs": {
+            "samples": [
+                "38",
+                0
+            ]
+        },
+        "class_type": "SetLatentNoiseMask",
+        "_meta": {
+            "title": "Set Latent Noise Mask"
+        }
+    }
+}
