@@ -1,0 +1,88 @@
+{
+    "16": {
+        "inputs": {
+            "prompt": "indian hindu wedding couple",
+            "threshold": 0.3,
+            "sam_model": [
+                "17",
+                0
+            ],
+            "grounding_dino_model": [
+                "21",
+                0
+            ],
+            "image": [
+                "22",
+                0
+            ]
+        },
+        "class_type": "GroundingDinoSAMSegment (segment anything)",
+        "_meta": {
+            "title": "GroundingDinoSAMSegment (segment anything)"
+        }
+    },
+    "17": {
+        "inputs": {
+            "model_name": "sam_vit_h (2.56GB)"
+        },
+        "class_type": "SAMModelLoader (segment anything)",
+        "_meta": {
+            "title": "SAMModelLoader (segment anything)"
+        }
+    },
+    "18": {
+        "inputs": {
+            "images": [
+                "16",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "19": {
+        "inputs": {
+            "mask": [
+                "16",
+                1
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "20": {
+        "inputs": {
+            "images": [
+                "19",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "21": {
+        "inputs": {
+            "model_name": "GroundingDINO_SwinT_OGC (694MB)"
+        },
+        "class_type": "GroundingDinoModelLoader (segment anything)",
+        "_meta": {
+            "title": "GroundingDinoModelLoader (segment anything)"
+        }
+    },
+    "22": {
+        "inputs": {
+            "image": "indiancouple.jpg",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    }
+}
