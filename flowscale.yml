@@ -28,6 +28,14 @@ workflows:
     inputs: []
     outputs: []
     skip_preprocess: true
+  - id: 1s9bplrwuex
+    name: inpainting_api.json
+    file: initialprojects/inpainting_api.json
+    version: 0
+    description: ''
+    inputs: []
+    outputs: []
+    skip_preprocess: true
 normal_workflows:
   - id: kb75oxeh00e
     name: pilot.json
@@ -40,4 +48,8 @@ normal_workflows:
   - id: a2wb37ks76q
     name: workflow1.json
     file: segmentation/workflow1.json
+    version: 0
+  - id: qk6fky9j1jn
+    name: inpainting.json
+    file: initialprojects/inpainting.json
     version: 0
