@@ -44,6 +44,14 @@ workflows:
     inputs: []
     outputs: []
     skip_preprocess: true
+  - id: ow1cxvz7e8d
+    name: productphotography2_api.json
+    file: initialprojects/productphotography2_api.json
+    version: 0
+    description: ''
+    inputs: []
+    outputs: []
+    skip_preprocess: true
 normal_workflows:
   - id: kb75oxeh00e
     name: pilot.json
@@ -64,4 +72,8 @@ normal_workflows:
   - id: paz56lpulis
     name: mask_light.json
     file: initialprojects/mask_light.json
+    version: 0
+  - id: 1filyawbtqw
+    name: productphotography2.json
+    file: initialprojects/productphotography2.json
     version: 0
