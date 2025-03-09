@@ -1,0 +1,67 @@
+{
+    "10": {
+        "inputs": {
+            "x": 0,
+            "y": 0,
+            "resize_source": false,
+            "destination": [
+                "12",
+                0
+            ],
+            "source": [
+                "13",
+                0
+            ],
+            "mask": [
+                "14",
+                1
+            ]
+        },
+        "class_type": "ImageCompositeMasked",
+        "_meta": {
+            "title": "ImageCompositeMasked"
+        }
+    },
+    "11": {
+        "inputs": {
+            "images": [
+                "10",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "12": {
+        "inputs": {
+            "image": "Cat2.jpg",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    },
+    "13": {
+        "inputs": {
+            "image": "Cat1.jpg",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    },
+    "14": {
+        "inputs": {
+            "image": "clipspace/clipspace-mask-467058.3000000119.png [input]",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    }
+}
