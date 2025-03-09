@@ -1,0 +1,200 @@
+{
+    "10": {
+        "inputs": {
+            "ckpt_name": "epicrealism_naturalSinRC1VAE.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "Load Checkpoint"
+        }
+    },
+    "11": {
+        "inputs": {
+            "image": "clipspace/clipspace-mask-1777274.699999988.png [input]",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load Image"
+        }
+    },
+    "12": {
+        "inputs": {
+            "pixels": [
+                "11",
+                0
+            ],
+            "vae": [
+                "10",
+                2
+            ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+            "title": "VAE Encode"
+        }
+    },
+    "13": {
+        "inputs": {
+            "text": "dusk light",
+            "clip": [
+                "10",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "14": {
+        "inputs": {
+            "text": "",
+            "clip": [
+                "10",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+        }
+    },
+    "15": {
+        "inputs": {
+            "multiplier": 0.18215,
+            "positive": [
+                "13",
+                0
+            ],
+            "negative": [
+                "14",
+                0
+            ],
+            "vae": [
+                "10",
+                2
+            ],
+            "foreground": [
+                "12",
+                0
+            ]
+        },
+        "class_type": "ICLightConditioning",
+        "_meta": {
+            "title": "IC-Light Conditioning"
+        }
+    },
+    "16": {
+        "inputs": {
+            "seed": 634176991839426,
+            "steps": 20,
+            "cfg": 8,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 1,
+            "model": [
+                "18",
+                0
+            ],
+            "positive": [
+                "15",
+                0
+            ],
+            "negative": [
+                "15",
+                1
+            ],
+            "latent_image": [
+                "20",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler"
+        }
+    },
+    "17": {
+        "inputs": {
+            "mask": [
+                "11",
+                1
+            ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+            "title": "Convert Mask to Image"
+        }
+    },
+    "18": {
+        "inputs": {
+            "model_path": "IC-Light/iclight_sd15_fc.safetensors",
+            "model": [
+                "10",
+                0
+            ]
+        },
+        "class_type": "LoadAndApplyICLightUnet",
+        "_meta": {
+            "title": "Load And Apply IC-Light"
+        }
+    },
+    "19": {
+        "inputs": {
+            "images": [
+                "17",
+                0
+            ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+            "title": "Preview Image"
+        }
+    },
+    "20": {
+        "inputs": {
+            "pixels": [
+                "17",
+                0
+            ],
+            "vae": [
+                "10",
+                2
+            ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+            "title": "VAE Encode"
+        }
+    },
+    "21": {
+        "inputs": {
+            "samples": [
+                "16",
+                0
+            ],
+            "vae": [
+                "10",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "22": {
+        "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+                "21",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Image"
+        }
+    }
+}
