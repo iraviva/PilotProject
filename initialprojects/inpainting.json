@@ -1,0 +1,250 @@
+{
+    "last_node_id": 14,
+    "last_link_id": 13,
+    "nodes": [
+        {
+            "id": 12,
+            "type": "LoadImage",
+            "pos": [
+                414.00006103515625,
+                24.999954223632812
+            ],
+            "size": [
+                315,
+                314
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        11
+                    ]
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "Cat2.jpg",
+                "image"
+            ]
+        },
+        {
+            "id": 13,
+            "type": "LoadImage",
+            "pos": [
+                74.59815979003906,
+                463.7487487792969
+            ],
+            "size": [
+                315,
+                314
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        12
+                    ]
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "Cat1.jpg",
+                "image"
+            ]
+        },
+        {
+            "id": 14,
+            "type": "LoadImage",
+            "pos": [
+                419.82025146484375,
+                391.4206237792969
+            ],
+            "size": [
+                315,
+                314
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": null
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        13
+                    ]
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "clipspace/clipspace-mask-467058.3000000119.png [input]",
+                "image"
+            ]
+        },
+        {
+            "id": 10,
+            "type": "ImageCompositeMasked",
+            "pos": [
+                822.75634765625,
+                227.36660766601562
+            ],
+            "size": [
+                315,
+                146
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "destination",
+                    "type": "IMAGE",
+                    "link": 11
+                },
+                {
+                    "name": "source",
+                    "type": "IMAGE",
+                    "link": 12
+                },
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "shape": 7,
+                    "link": 13
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        10
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "ImageCompositeMasked"
+            },
+            "widgets_values": [
+                0,
+                0,
+                false
+            ]
+        },
+        {
+            "id": 11,
+            "type": "PreviewImage",
+            "pos": [
+                796.8326416015625,
+                437.0382995605469
+            ],
+            "size": [
+                210,
+                246
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 10
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "cnr_id": "comfy-core",
+                "ver": "0.3.15",
+                "Node name for S&R": "PreviewImage"
+            }
+        }
+    ],
+    "links": [
+        [
+            10,
+            10,
+            0,
+            11,
+            0,
+            "IMAGE"
+        ],
+        [
+            11,
+            12,
+            0,
+            10,
+            0,
+            "IMAGE"
+        ],
+        [
+            12,
+            13,
+            0,
+            10,
+            1,
+            "IMAGE"
+        ],
+        [
+            13,
+            14,
+            1,
+            10,
+            2,
+            "MASK"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {
+        "ds": {
+            "scale": 1.3310000000000004,
+            "offset": [
+                96.21581679291282,
+                -12.127373344576279
+            ]
+        }
+    },
+    "version": 0.4
+}
