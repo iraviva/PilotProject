@@ -52,6 +52,14 @@ workflows:
     inputs: []
     outputs: []
     skip_preprocess: true
+  - id: zr4e4teoq4
+    name: product_photography_improved_api.json
+    file: initialprojects/product_photography_improved_api.json
+    version: 0
+    description: ''
+    inputs: []
+    outputs: []
+    skip_preprocess: true
 normal_workflows:
   - id: kb75oxeh00e
     name: pilot.json
@@ -76,4 +84,8 @@ normal_workflows:
   - id: 1filyawbtqw
     name: productphotography2.json
     file: initialprojects/productphotography2.json
+    version: 0
+  - id: 6f3qv7cnfbe
+    name: product_photography_improved.json
+    file: initialprojects/product_photography_improved.json
     version: 0
